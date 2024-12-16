@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Users, Bell, Upload, BarChart3 } from "lucide-react";
 
