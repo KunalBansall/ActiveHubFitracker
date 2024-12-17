@@ -6,7 +6,8 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">ActiveHub FitTracker</h2>
+            <h2 className="text-2xl font-bold"><a href="hero" className="hover:text-blue-400 transition-colors"> ActiveHub FitTracker
+              </a></h2>
             <p className="text-gray-400">Empowering gym owners with smart management solutions.</p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-blue-400 transition-colors">
