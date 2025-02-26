@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import About from "./components/Benefits";
 import { Footer } from "./components/Footer";
 import ScreenshotSection from "./components/ScreenShots";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
       <div id="footer">
         <Footer />
       </div>
+      {/* Analytics Component */}
+      <Analytics />
     </main>
   );
 }
