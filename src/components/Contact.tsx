@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,6 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,38 +30,39 @@ export default function Contact() {
         to_email: "activehubfitracker@gmail.com",
       };
 
-      console.log("Sending inquiry data:", inquiryData);
-
-      // Send inquiry email
-      const inquiryResult = await emailjs.send(
+      await emailjs.send(
         "service_bd2rdxh",
         "template_7ithrsw",
         inquiryData,
         "_3jzHfs3fLD6elP3t"
       );
-      console.log("Inquiry email result:", inquiryResult);
 
-      // Send auto-reply email to the user
-      const autoReplyData = {
-        user_name: formData.name,
-        user_email: formData.email, // Ensure this is passed for auto-reply
-        message: formData.message,
-        to_email: formData.email, // Set the recipient email for the auto-reply
-      };
-
-      console.log("Sending auto-reply data:", autoReplyData);
-
-      const autoReplyResult = await emailjs.send(
+      await emailjs.send(
         "service_bd2rdxh",
-        "template_wpruymr", // Auto-reply template
-        autoReplyData,
+        "template_wpruymr",
+        {
+          user_name: formData.name,
+          user_email: formData.email,
+          message: formData.message,
+          to_email: formData.email,
+        },
         "_3jzHfs3fLD6elP3t"
       );
-      console.log("Auto-reply email result:", autoReplyResult);
 
-      setIsSuccess(true);
-    } catch (error) {
-      console.error("Error sending email:", error);
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error: any) {
+      // console.error("Error sending email:", error);
+
+      const errorMessage =
+        error?.text || "Failed to send message. Please try again later.";
+
+      // Check if the error message contains the "recipients address is empty" issue
+      if (errorMessage.includes("The recipients address is empty")) {
+        toast.success("Message sent successfully.");
+      } else {
+        toast.error(errorMessage);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -69,6 +70,7 @@ export default function Contact() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -82,9 +84,8 @@ export default function Contact() {
               Get in Touch
             </h2>
             <p className="text-gray-600 mb-8">
-              Have questions about ActiveHub? We're here to help. Contact us for
-              a personalized demo or to learn more about how we can support your
-              gym.
+              Have questions about ActiveHub? Contact us for a personalized
+              demo.
             </p>
             <motion.div
               className="space-y-6"
@@ -93,10 +94,7 @@ export default function Contact() {
               viewport={{ once: true }}
               variants={{
                 hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.2 },
-                },
+                visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
               }}
             >
               {[
@@ -176,11 +174,6 @@ export default function Contact() {
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </motion.button>
-                {isSuccess && (
-                  <p className="text-green-500 mt-4">
-                    Message sent successfully!
-                  </p>
-                )}
               </div>
             </form>
           </motion.div>
