@@ -120,7 +120,7 @@ export default function AboutUs() {
         </motion.div>
 
         {/* Team */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -140,7 +140,7 @@ export default function AboutUs() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* CTA */}
         <motion.div
