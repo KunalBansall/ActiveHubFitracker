@@ -6,14 +6,32 @@ import Contact from "./components/Contact";
 import About from "./components/Benefits";
 import { Footer } from "./components/Footer";
 import ScreenshotSection from "./components/ScreenShots";
+import Presentation from "./components/Presentation";
 import { Analytics } from "@vercel/analytics/react";
+import { useState } from "react";
 
 function App() {
+  const [showPresentation, setShowPresentation] = useState(false);
+
+  if (showPresentation) {
+    return (
+      <div>
+        <Presentation />
+        <button
+          onClick={() => setShowPresentation(false)}
+          className="fixed top-4 left-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 py-2 rounded-lg transition-all"
+        >
+          ← Back to Website
+        </button>
+      </div>
+    );
+  }
+
   return (
     <main>
       {/* Hero Section */}
       <div id="hero">
-        <Hero />
+        <Hero onShowPresentation={() => setShowPresentation(true)} />
       </div>
 
       {/* Features Section */}

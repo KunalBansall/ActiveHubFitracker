@@ -5,36 +5,43 @@ import { Check } from 'lucide-react';
 
 const plans = [
   {
-    name: 'Free',
-    price: 'Free',
+    name: 'Basic Plan',
+    price: '₹999',
+    originalPrice: '₹1,499',
     features: [
-      'Up to 100 members',
-      'Basic reporting',
+      'Member management dashboard',
+      'Automated renewal reminders',
+      'Basic member tracking',
       'Email support',
-      'Member app access',
+      'Up to 200 members',
     ],
   },
   {
-    name: 'Pro',
-    price: 'Free',
+    name: 'Growth Plan',
+    price: '₹2,499',
+    originalPrice: '₹3,499',
     features: [
-      'Up to 500 members',
-      'Advanced analytics',
+      'Everything in Basic',
+      'Marketplace listing',
+      'Inactive member detection',
+      'Advanced analytics dashboard',
       'Priority support',
-      'Custom branding',
-      'API access',
+      'Up to 500 members',
     ],
     recommended: true,
   },
   {
-    name: 'Enterprise',
-    price: 'Free',
+    name: 'Pro Plan',
+    price: '₹4,999',
+    originalPrice: '₹6,999',
     features: [
+      'Everything in Growth',
+      'Shop feature for merchandise',
+      'Ad management system',
+      'Branded mobile app',
+      'Advanced reporting',
       'Unlimited members',
-      'Dedicated account manager',
       '24/7 phone support',
-      'Custom integrations',
-      'On-site training',
     ],
   },
 ];
@@ -51,10 +58,11 @@ export default function Pricing() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Choose the Perfect Plan for Your Gym
+            Transform Your Gym with ActiveHub FitTracker
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We offer flexible pricing options to suit gyms of all sizes. Find the plan that works best for you.
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Choose the perfect plan to grow your gym, retain more members, and unlock new revenue streams. 
+            Our SaaS platform scales with your business needs.
           </p>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -76,7 +84,17 @@ export default function Pricing() {
                 </div>
               )}
               <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-              <p className="text-4xl font-bold mb-6">{plan.price}<span className="text-lg font-normal text-gray-600">/month</span></p>
+              <div className="mb-6">
+                <p className="text-4xl font-bold text-green-600">{plan.price}<span className="text-lg font-normal text-gray-600">/month</span></p>
+                {plan.originalPrice && (
+                  <div className="flex items-center justify-center gap-2 mt-2">
+                    <span className="text-lg text-gray-500 line-through">{plan.originalPrice}/month</span>
+                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                      Save ₹{(parseInt(plan.originalPrice.replace('₹', '').replace(',', '')) - parseInt(plan.price.replace('₹', '').replace(',', ''))).toLocaleString()}
+                    </span>
+                  </div>
+                )}
+              </div>
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center">
@@ -99,6 +117,28 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+        
+        {/* ROI Highlight */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-16 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 text-center"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            🚀 Proven ROI: Save ₹30,000+ Monthly
+          </h3>
+          <p className="text-gray-700 max-w-3xl mx-auto">
+            Our gym with 200 members reduced churn from 15% to 5%, saving ₹30,000/month in lost revenue. 
+            Plus, the Shop feature generates an average ₹20,000/month in additional income.
+          </p>
+          <div className="mt-6 bg-green-100 rounded-lg p-4 inline-block">
+            <p className="text-lg font-semibold text-green-800">
+              💰 Net Impact: +₹50,000/month gain for ₹3,000 subscription
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

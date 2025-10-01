@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Dumbbell } from "lucide-react";
+import { ArrowRight, Dumbbell, Presentation } from "lucide-react";
 
-export default function Hero() {
+interface HeroProps {
+  onShowPresentation?: () => void;
+}
+
+export default function Hero({ onShowPresentation }: HeroProps) {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-blue-900 to-black flex items-center overflow-hidden">
       <div className="absolute inset-0">
@@ -54,6 +58,17 @@ export default function Hero() {
               >
                 <a href="#features">Learn More</a>
               </motion.button>
+              {onShowPresentation && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={onShowPresentation}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all text-sm sm:text-base"
+                >
+                  <Presentation className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>View Presentation</span>
+                </motion.button>
+              )}
             </div>
           </motion.div>
           <motion.div
