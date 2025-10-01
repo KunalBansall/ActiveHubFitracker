@@ -11,25 +11,25 @@ const screenshots: Screenshot[] = [
     title: "Dashboard Overview",
     description:
       "Get a comprehensive view of your gym's performance with real-time analytics and insights of Memberships of Member notify them if they have expiring status of memberships.",
-    image: "/Dashboard.png",
+    image: "/dashboard (2).png",
   },
   {
     title: "Member Management",
     description:
       "Easily manage memberships, track attendance, and handle member profiles in one place.",
-    image: "/Memberdetails.png",
+    image: "/memberDetails.png",
   },
   {
     title: "Member Attendance",
     description:
       "Members attendance management at your ease with a lifetime history and session duration checks.",
-    image: "/Attendence.png",
+    image: "/attendence_management.png",
   },
   {
     title: "Member Engagement",
     description:
       "A place which cares for both gym and its family. Dashboard for members where they can track their growth, sessions, memberships and engagement in their Gym.",
-    image: "/Memberprofile.png",
+    image: "/member_profile.png",
   },
 ];
 

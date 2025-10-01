@@ -1,9 +1,14 @@
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import DashboardShowcase from "./components/DashboardShowcase";
+import ProductShowcase from "./components/ProductShowcase";
 import Features from "./components/Features";
+import ShopManagementShowcase from "./components/ShopManagementShowcase";
 import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
-import About from "./components/Benefits";
+import AboutUs from "./components/AboutUs";
+import FAQ from "./components/FAQ";
 import { Footer } from "./components/Footer";
 import ScreenshotSection from "./components/ScreenShots";
 import Presentation from "./components/Presentation";
@@ -29,22 +34,37 @@ function App() {
 
   return (
     <main>
+      {/* Navigation */}
+      <Navbar />
+      
       {/* Hero Section */}
       <div id="hero">
         <Hero onShowPresentation={() => setShowPresentation(true)} />
+      </div>
+
+      {/* Dashboard Showcase */}
+      <div id="dashboard">
+        <DashboardShowcase />
+      </div>
+
+      {/* Product Showcase */}
+      <div id="product-showcase">
+        <ProductShowcase />
       </div>
 
       {/* Features Section */}
       <div id="features">
         <Features />
       </div>
-      <div id="feature">
+      
+      {/* Screenshots Section */}
+      <div id="screenshots">
         <ScreenshotSection />
       </div>
 
-      {/* About Section */}
-      <div id="about">
-        <About />
+      {/* Shop Management Showcase */}
+      <div id="shop">
+        <ShopManagementShowcase />
       </div>
 
       {/* Testimonials Section */}
@@ -55,6 +75,16 @@ function App() {
       {/* Pricing Section */}
       <div id="pricing">
         <Pricing />
+      </div>
+
+      {/* About Us Section */}
+      <div id="about">
+        <AboutUs />
+      </div>
+
+      {/* FAQ Section */}
+      <div id="faq">
+        <FAQ />
       </div>
 
       {/* Contact Section */}

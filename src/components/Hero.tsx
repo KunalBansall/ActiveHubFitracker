@@ -27,27 +27,40 @@ export default function Hero({ onShowPresentation }: HeroProps) {
           >
             <div className="flex justify-center lg:justify-start items-center gap-2 mb-6">
               <Dumbbell className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
-              <span className="text-xl sm:text-2xl font-bold">
+              <span className="text-xl sm:hidden md:block font-bold">
                 ActiveHub Fitracker
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Revolutionize Your
-              <span className="text-blue-400"> Gym Experience</span>
+              More Members. More Money.
+              <span className="text-blue-400"> Less Effort.</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-8">
-              Transform your gym management with our all-in-one solution.
-              Streamline operations, enhance member experience, and grow your
-              business.
+              The complete gym management SaaS platform that helps gym owners retain members, 
+              automate renewals, and unlock new revenue streams through our integrated marketplace and shop features.
             </p>
+            <div className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <span>Reduce churn by 67%</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>Increase revenue by ₹50K/month</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                <span>Save 10+ hours weekly</span>
+              </div>
+            </div>
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all text-sm sm:text-base"
               >
-                <a href="#feature" className="flex items-center gap-2">
-                  <span>Get Started</span>
+                <a href="#pricing" className="flex items-center gap-2">
+                  <span>Start Free Trial</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
               </motion.button>
@@ -56,7 +69,7 @@ export default function Hero({ onShowPresentation }: HeroProps) {
                 whileTap={{ scale: 0.95 }}
                 className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-all text-sm sm:text-base"
               >
-                <a href="#features">Learn More</a>
+                <a href="#contact">Book a Demo</a>
               </motion.button>
               {onShowPresentation && (
                 <motion.button
